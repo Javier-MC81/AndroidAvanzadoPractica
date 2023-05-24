@@ -9,30 +9,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import javax.inject.Inject
 
-class RemoteDataSource {
-    private val moshi = Moshi.Builder()
-        .addLast(KotlinJsonAdapterFactory())
-        .build()
-
-    private val okHttpClient =
-        OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            }).build()
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://dragonball.keepcoding.education/")
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
-        .build()
-    private val api: DragonBallLoginApi = retrofit.create(DragonBallLoginApi::class.java)
+class RemoteDataSource @Inject constructor(private val api: DragonBallLoginApi){
 
     suspend fun getToken(credential: String): String {
-
-        /*api.getHeader(credential) {
-            @Headers("Authorization: Basic $credential")
-        }*/
         return api.getToken("$credential")
     }
 
