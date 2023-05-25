@@ -16,10 +16,10 @@
         android:theme="@style/Theme.AndroidAvanzadoPractica"
         tools:targetApi="31">
         <activity
-            android:name=".HeroesActivity"
+            android:name=".ui.HeroesActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AndroidAvanzadoPractica">
