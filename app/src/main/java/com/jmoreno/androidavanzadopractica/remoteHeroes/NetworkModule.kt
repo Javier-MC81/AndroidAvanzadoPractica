@@ -1,4 +1,4 @@
-package com.jmoreno.androidavanzadopractica.di
+package com.jmoreno.androidavanzadopractica.remoteHeroes
 
 import com.jmoreno.androidavanzadopractica.DragonBallLoginApi
 import com.squareup.moshi.Moshi
@@ -12,38 +12,42 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    /*@Provides
-    fun providesMoshiToLogin(): Moshi {
-        val moshi = Moshi.Builder()
+
+    @Provides
+    fun providesMoshi(): Moshi {
+        return Moshi.Builder()
             .addLast(KotlinJsonAdapterFactory())
             .build()
-        return moshi
     }
 
     @Provides
-    fun providesOkHttpToLogin(): OkHttpClient {
-        val okhttp = OkHttpClient.Builder()
+    fun providesOkhttp(): OkHttpClient {
+        return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).apply {
                 level = HttpLoggingInterceptor.Level.BODY
             }).build()
-        return okhttp
     }
+
     @Provides
-    fun providesRetrofitToLogin(okHttpClient : OkHttpClient, moshi: Moshi): Retrofit {
-        val retrofit = Retrofit.Builder()
+    fun providesRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
+
+        return Retrofit.Builder()
             .baseUrl("https://dragonball.keepcoding.education/")
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
             .build()
-        return retrofit
+    }
+
+    @Provides
+    fun providesApi(retrofit: Retrofit): DragonBallHeroesApi {
+        return retrofit.create(DragonBallHeroesApi::class.java)
     }
     @Provides
     fun providesLoginApi(retrofit : Retrofit): DragonBallLoginApi {
         val api = retrofit.create(DragonBallLoginApi::class.java)
         return api
-    }*/
+    }
 }

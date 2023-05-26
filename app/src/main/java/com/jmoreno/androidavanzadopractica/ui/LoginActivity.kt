@@ -34,7 +34,8 @@ class LoginActivity() : AppCompatActivity() {
                 viewModel.token.collect(){
                     when (it){
                         is LoginViewModel.UiState.OnTokenReceived ->
-                            binding.tvToken?.text = it.text
+                            //binding.tvToken?.text = it.text
+                            HeroesActivity.launch(this@LoginActivity,it.text)
                            // startActivity(HeroesActivity())
                         is LoginViewModel.UiState.Error -> binding.tvToken?.text = it.error
                         else -> Unit
