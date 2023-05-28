@@ -1,6 +1,6 @@
 package com.jmoreno.androidavanzadopractica
 
-import com.jmoreno.androidavanzadopractica.remote.RemoteDataSource
+import com.jmoreno.androidavanzadopractica.remoteLogin.RemoteDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

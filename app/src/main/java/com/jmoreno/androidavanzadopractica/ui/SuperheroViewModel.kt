@@ -17,10 +17,10 @@ import javax.inject.Inject
 @HiltViewModel
 class SuperheroViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    /*private val _uiListState = MutableStateFlow<SuperheroViewModel.UiListState>(SuperheroViewModel.UiListState.Idle)
-    val uiListState : StateFlow<SuperheroViewModel.UiListState> = _uiListState*/
-    private val _heros = MutableLiveData<List<Superhero>>()
-    val heros: LiveData<List<Superhero>> get() = _heros
+    private val _uiListState = MutableStateFlow<SuperheroViewModel.UiListState>(SuperheroViewModel.UiListState.Idle)
+    val uiListState : StateFlow<SuperheroViewModel.UiListState> = _uiListState
+   // private val _heros = MutableLiveData<List<Superhero>>()
+    //val heros: LiveData<List<Superhero>> get() = _heros
 
 
     fun getHeros(token: String?) {
@@ -29,7 +29,7 @@ class SuperheroViewModel @Inject constructor(private val repository: Repository)
                 repository.getHeros(token) // Thread.sleep(1000)
             }
 
-            _heros.value = result
+            _uiListState.value = UiListState.OnListReceived(result)
         }
     }
     sealed class UiListState {

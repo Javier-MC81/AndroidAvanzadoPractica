@@ -2,7 +2,6 @@ package com.jmoreno.androidavanzadopractica.remoteHeroes
 
 import com.jmoreno.androidavanzadopractica.local.LocalDataSource
 import com.jmoreno.androidavanzadopractica.local.LocalDataSourceImpl
-import com.jmoreno.androidavanzadopractica.remote.RemoteDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

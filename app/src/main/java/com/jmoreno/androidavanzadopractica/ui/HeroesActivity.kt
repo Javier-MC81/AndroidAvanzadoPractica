@@ -20,8 +20,6 @@ class HeroesActivity : AppCompatActivity() {
     companion object {
 
         const val TAG_STRING = "TOKEN_STRING"
-        const val TAG_NUM = "TAG_NUM"
-        const val TAG_PERSONAJE = "TAG_PERSONAJE"
 
         fun launch(context: Context, text: String) {
             val intent = Intent(context, HeroesActivity::class.java)
@@ -43,22 +41,9 @@ class HeroesActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         val token = intent.getStringExtra(TAG_STRING)
 
-        /*lifecycleScope.launch {
-
-        }*/
         lifecycleScope.launch {
             viewModel.getHeros(token)
-            /*viewModel.token.collect(){
-                when (it){
-                    is LoginViewModel.UiState.OnTokenReceived ->
-                        //binding.tvToken?.text = it.text
-                        HeroesActivity.launch(this@LoginActivity,it.text)
-                    // startActivity(HeroesActivity())
-                    is LoginViewModel.UiState.Error -> binding.tvToken?.text = it.error
-                    else -> Unit
 
-                }
-            }*/
         }
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)

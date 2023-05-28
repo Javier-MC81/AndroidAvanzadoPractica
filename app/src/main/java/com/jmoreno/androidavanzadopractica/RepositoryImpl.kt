@@ -1,6 +1,6 @@
 package com.jmoreno.androidavanzadopractica
 
-import com.jmoreno.androidavanzadopractica.remote.RemoteDataSource
+import com.jmoreno.androidavanzadopractica.remoteLogin.RemoteDataSource
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(private val remoteDataSource: RemoteDataSource) : Repository{

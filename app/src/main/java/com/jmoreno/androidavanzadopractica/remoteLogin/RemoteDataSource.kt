@@ -1,4 +1,4 @@
-package com.jmoreno.androidavanzadopractica.remote
+package com.jmoreno.androidavanzadopractica.remoteLogin
 
 import com.jmoreno.androidavanzadopractica.DragonBallLoginApi
 import javax.inject.Inject

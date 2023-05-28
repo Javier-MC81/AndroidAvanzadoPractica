@@ -41,30 +41,32 @@ class SuperheroListFragment : Fragment() {
             )
         }
 
-        binding.superheroList.adapter = adapter
+        binding.superherolist.adapter = adapter
 
         viewModel.heros.observe(viewLifecycleOwner) { heros ->
             adapter.submitList(heros)
 
         }
-        /*viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiListState.collect{
                 when (it) {
-                    //SecondActivityViewModel.UiListState.Empty -> {}
+
                     is SuperheroViewModel.UiListState.Error -> {} // Mostrar un mensaje de error
                     SuperheroViewModel.UiListState.Idle -> {} // Mostrar el loading (si tienes)
                     is SuperheroViewModel.UiListState.OnHeroReceived -> {
                         //showHero(it.personaje)
-                    } // Abrir el otro fragment
+                    }
                     is SuperheroViewModel.UiListState.OnListReceived -> {
-                        val listaPersonajes = it.heroeList
+                        adapter.submitList(it.heroeList)
+                        /*val listaPersonajes = it.heroeList
                         val adapter = SuperheroAdapter(listaPersonajes,)
                         binding.superheroList.layoutManager = LinearLayoutManager(binding.root.context)
-                        binding.superheroList.adapter = adapter
+                        binding.superheroList.adapter = adapter*/
                     }
+                    else-> Unit
                 }
             }
-        }*/
+        }
 
 
 

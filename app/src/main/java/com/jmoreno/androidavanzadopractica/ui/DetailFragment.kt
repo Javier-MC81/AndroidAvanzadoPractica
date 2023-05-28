@@ -9,37 +9,24 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.jmoreno.androidavanzadopractica.R
 import com.jmoreno.androidavanzadopractica.databinding.FragmentDetailBinding
-import com.jmoreno.androidavanzadopractica.databinding.FragmentSecondBinding
+import com.jmoreno.androidavanzadopractica.utils.viewBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class DetailFragment : Fragment() {
 
-    private var _binding: FragmentDetailBinding? = null
+    private val binding: FragmentDetailBinding by viewBinding(FragmentDetailBinding::bind)
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
-    //private val args: DetailFragmentArgs by navArgs()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        return binding.root
-
-    }
+    //private val binding get() = _binding!!
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //binding.textviewSecond.text = args.superheroId
+        binding.textviewSecond.text = args.superheroId
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
