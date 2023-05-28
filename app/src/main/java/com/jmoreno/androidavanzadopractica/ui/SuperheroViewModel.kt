@@ -19,7 +19,7 @@ class SuperheroViewModel @Inject constructor(private val repository: Repository)
 
     private val _uiListState = MutableStateFlow<SuperheroViewModel.UiListState>(SuperheroViewModel.UiListState.Idle)
     val uiListState : StateFlow<SuperheroViewModel.UiListState> = _uiListState
-   // private val _heros = MutableLiveData<List<Superhero>>()
+    //private val _heros = MutableLiveData<List<Superhero>>()
     //val heros: LiveData<List<Superhero>> get() = _heros
 
 

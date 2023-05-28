@@ -43,10 +43,10 @@ class SuperheroListFragment : Fragment() {
 
         binding.superherolist.adapter = adapter
 
-        viewModel.heros.observe(viewLifecycleOwner) { heros ->
+        /*viewModel.heros.observe(viewLifecycleOwner) { heros ->
             adapter.submitList(heros)
 
-        }
+        }*/
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiListState.collect{
                 when (it) {
